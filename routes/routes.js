@@ -15,7 +15,7 @@ router.get('/', indexController);
 router.post('/addcourse', addCourseController);
 router.get('/courses', viewAllCoursesController);
 router.get('/course/:id', viewSpecificCourseController);
-router.post('/updatecourse/:id', updateCourseController);
-router.get('/deletecourse/:id', deleteCourseController);
+router.patch('/updatecourse/:id', updateCourseController);
+router.delete('/deletecourse/:id', deleteCourseController);
 
 export default router
