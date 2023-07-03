@@ -1,7 +1,7 @@
 import koa from 'koa';
 import router from './routes/routes.js';
-import render from 'koa-ejs';
 import bodyparser from 'koa-bodyparser';
+import connectDb from './db/dbconnection.js';
 
 // app initilization
 const app = new koa();
@@ -12,16 +12,12 @@ app.use(bodyparser());
 // router settings
 app.use(router.routes()).use(router.allowedMethods());
 
-// view rendering settings
-render(app, {
-    root: "/Users/chinmayagrawal/Desktop/first_koa_app/views",
-    layout: 'layout',
-    viewExt: 'html',
-})
+// Database Connection
+connectDb('mongodb://localhost:27017');
 
 // response
 app.use(ctx => {
-  ctx.body = "Hello World";
+  ctx.body = {"msg": "Working"};
 });
 
 // Server running app
